@@ -1,1 +1,3 @@
-maps/.cache/*
+# Maps Project
+maps/.cache/
+maps/.parcel-cache/
