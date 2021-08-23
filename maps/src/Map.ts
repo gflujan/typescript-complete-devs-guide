@@ -48,7 +48,7 @@ export class Map {
 
    // Good way of writing code
    public addMarker(entity: MapEntity): void {
-      const { markerContent, location, markerColor } = entity;
+      const { location, markerColor, markerContent } = entity;
       const content = markerContent();
       const url = `http://maps.google.com/mapfiles/ms/icons/${markerColor || 'red'}-dot.png`;
 
