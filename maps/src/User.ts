@@ -43,6 +43,6 @@ export class User {
    }
 
    public markerContent(): string {
-      return `User Name: ${this.name}`;
+      return `User Name: ${this?.name || 'Sloane'}`;
    }
 }
