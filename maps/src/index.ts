@@ -17,7 +17,7 @@ import { User } from './User';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `INDEX` COMPONENT
+// DEFINING THE `INDEX` FILE
 /* ========================================================================== */
 const company: Company = new Company();
 const map: Map = new Map('map');

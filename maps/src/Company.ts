@@ -40,6 +40,10 @@ export class Company {
    }
 
    public markerContent(): string {
+      console.log('🚀--BLLR?: ================================================');
+      console.log('🚀--BLLR?: COMPANY INSTANCE OF THIS? ->', this); // TODO **[G]** :: REMOVE ME!!!
+      console.log('🚀--BLLR?: ================================================');
+
       return `
          <div>
             <h1>Company Name: ${this?.companyName || 'Bueller'}</h1>
