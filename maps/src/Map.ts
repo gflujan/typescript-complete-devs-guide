@@ -48,8 +48,10 @@ export class Map {
 
    // Good way of writing code
    public addMarker(entity: MapEntity): void {
-      const { location, markerColor, markerContent } = entity;
-      const content = markerContent();
+      const { location, markerColor } = entity;
+      const content = entity.markerContent();
+      // TypeScript didn't like me destructuring `markerContent` on r2g2-md
+      // it somehow lost the context of `this` for the incoming entity
       const url = `http://maps.google.com/mapfiles/ms/icons/${markerColor || 'red'}-dot.png`;
 
       const marker = new google.maps.Marker({
