@@ -8,7 +8,7 @@ import faker from 'faker';
 // Components / Classes
 // Assets
 // Constants / Models / Interfaces / Types
-import { Location } from './Map';
+import { Location, MapEntity } from './Map';
 // Utils / Methods / Mocks
 // Styles
 
@@ -19,7 +19,7 @@ import { Location } from './Map';
 /* ========================================================================== */
 // DEFINING THE `COMPANY` COMPONENT
 /* ========================================================================== */
-export class Company {
+export class Company implements MapEntity {
    public catchPhrase: string;
    public companyName: string;
    public location: Location;

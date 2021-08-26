@@ -22,7 +22,7 @@ export interface Location {
  * Instructions to every other class
  * on how they can be an argument to `addMarker`
  */
-interface MapEntity {
+export interface MapEntity {
    location: Location;
    markerColor?: string;
    markerContent(): string;

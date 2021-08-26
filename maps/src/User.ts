@@ -8,7 +8,7 @@ import faker from 'faker';
 // Components / Classes
 // Assets
 // Constants / Models / Interfaces / Types
-import { Location } from './Map';
+import { Location, MapEntity } from './Map';
 // Utils / Methods / Mocks
 // Styles
 
@@ -23,7 +23,7 @@ enum Gender {
 /* ========================================================================== */
 // DEFINING THE `USER` COMPONENT
 /* ========================================================================== */
-export class User {
+export class User implements MapEntity {
    public location: Location;
    public markerColor = 'red';
    public name: string;
