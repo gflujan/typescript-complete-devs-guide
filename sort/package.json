@@ -8,7 +8,12 @@
       "start:run": "nodemon build/index.js",
       "start": "concurrently npm:start:*"
    },
-   "keywords": [],
+   "keywords": [
+      "education",
+      "stephen grider",
+      "typescript",
+      "udemy"
+   ],
    "author": "",
    "license": "ISC",
    "dependencies": {
