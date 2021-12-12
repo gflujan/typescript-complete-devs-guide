@@ -1,23 +1,23 @@
-import fs from 'fs';
+/* ========================================================================== */
+// ALL REQUIRED IMPORTS
+/* ========================================================================== */
+// React
+// Packages
+// Context / Store / Router
+// Components / Classes / Controllers / Services
+// Assets
+// Constants / Models / Interfaces / Types
+import { MatchResult } from './MatchResult';
+// Utils / Methods / Mocks
+import { CsvFileReader } from './CsvFileReader';
+// Styles
 
-const matches: Array<Array<string>> = fs
-   .readFileSync('football-data.csv', {
-      encoding: 'utf-8',
-   })
-   .split('\n')
-   .map((row: string): Array<string> => {
-      return row.split(',');
-   });
-
-enum MatchResult {
-   AwayWin = 'A',
-   Draw = 'D',
-   HomeWin = 'H',
-}
+const reader: CsvFileReader = new CsvFileReader('football-data.csv');
+reader.read();
 
 let manUnitedWins = 0;
 
-for (let match of matches) {
+for (let match of reader.data) {
    if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
       manUnitedWins += 1;
    } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
