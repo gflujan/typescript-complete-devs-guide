@@ -13,8 +13,10 @@ import { MatchResult } from './MatchResult';
 import { dateStringToDate } from './utils';
 // Styles
 
+type MatchData = [Date, string, string, number, number, MatchResult, string]; // this is a Tuple definition
+
 export class CsvFileReader {
-   public data: Array<Array<string>> = [];
+   public data: Array<MatchData> = [];
 
    constructor(public filename: string) {}
 
@@ -27,7 +29,7 @@ export class CsvFileReader {
          .map((row: string): Array<string> => {
             return row.split(',');
          })
-         .map((row: Array<string>): Array<string> => {
+         .map((row: Array<string>): MatchData => {
             return [
                dateStringToDate(row[0]),
                row[1],
