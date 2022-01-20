@@ -5,14 +5,14 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { MatchReader } from './MatchReader';
 // Assets
 // Constants / Models / Interfaces / Types
 import { MatchResult } from './MatchResult';
 // Utils / Methods / Mocks
-import { CsvFileReader } from './CsvFileReader';
 // Styles
 
-const reader: CsvFileReader = new CsvFileReader('football-data.csv');
+const reader: MatchReader = new MatchReader('football-data.csv');
 reader.read();
 
 let manUnitedWins = 0;
