@@ -5,11 +5,13 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { ConsoleReport } from './reportTargets/ConsoleReport';
 import { CsvFileReader } from './CsvFileReader';
 import { MatchReader } from './MatchReader';
+import { WinsAnalysis } from './analyzers/WinsAnalysis';
+import { Summary } from './Summary';
 // Assets
 // Constants / Models / Interfaces / Types
-import { MatchResult } from './MatchResult';
 // Utils / Methods / Mocks
 // Styles
 
@@ -19,17 +21,5 @@ const csvFileReader: CsvFileReader = new CsvFileReader('football-data.csv');
 // Step 2: Create an instance of `MatchReader` and pass in something satisfying the `DataReader` interface
 const matchReader: MatchReader = new MatchReader(csvFileReader);
 matchReader.load();
-
-let manUnitedWins = 0;
-
-for (let match of matchReader.matches) {
-   if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
-      manUnitedWins += 1;
-   } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
-      manUnitedWins += 1;
-   }
-}
-
-console.log('🚀--BLLR?: ===============================================');
-console.log(`🚀--BLLR?: MANCHESTER UNITED WON ${manUnitedWins} GAMES!!!`);
-console.log('🚀--BLLR?: ===============================================');
+const summary: Summary = new Summary(new WinsAnalysis('Man United'), new ConsoleReport());
+summary.buildAndPrintReport(matchReader.matches);
