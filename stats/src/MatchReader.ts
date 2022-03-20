@@ -7,12 +7,11 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { MatchResult } from './MatchResult';
+import type { MatchData } from './MatchData';
+import type { MatchResult } from './MatchResult';
 // Utils / Methods / Mocks
 import { dateStringToDate } from './utils';
 // Styles
-
-type MatchData = [Date, string, string, number, number, MatchResult, string]; // this is a Tuple definition
 
 interface DataReader {
    read(): void;

@@ -4,12 +4,12 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { CsvFileReader } from './CsvFileReader';
 // Assets
 // Constants / Models / Interfaces / Types
-import { CsvFileReader } from './CsvFileReader';
-import { MatchResult } from './MatchResult';
+import type { MatchResult } from '../MatchResult';
 // Utils / Methods / Mocks
-import { dateStringToDate } from './utils';
+import { dateStringToDate } from '../utils';
 // Styles
 
 type MatchData = [Date, string, string, number, number, MatchResult, string]; // this is a Tuple definition
