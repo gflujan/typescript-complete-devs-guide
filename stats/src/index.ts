@@ -7,6 +7,7 @@
 // Components / Classes / Controllers / Services
 import { ConsoleReport } from './reportTargets/ConsoleReport';
 import { CsvFileReader } from './CsvFileReader';
+import { HtmlReport } from './reportTargets/HtmlReport';
 import { MatchReader } from './MatchReader';
 import { WinsAnalysis } from './analyzers/WinsAnalysis';
 import { Summary } from './Summary';
@@ -21,5 +22,6 @@ const csvFileReader: CsvFileReader = new CsvFileReader('football-data.csv');
 // Step 2: Create an instance of `MatchReader` and pass in something satisfying the `DataReader` interface
 const matchReader: MatchReader = new MatchReader(csvFileReader);
 matchReader.load();
-const summary: Summary = new Summary(new WinsAnalysis('Man United'), new ConsoleReport());
+// const summary: Summary = new Summary(new WinsAnalysis('Man United'), new ConsoleReport());
+const summary: Summary = new Summary(new WinsAnalysis('Man United'), new HtmlReport());
 summary.buildAndPrintReport(matchReader.matches);
