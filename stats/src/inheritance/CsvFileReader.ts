@@ -17,7 +17,7 @@ export abstract class CsvFileReader<T> {
 
    abstract mapRow(row: Array<string>): T;
 
-   read(): void {
+   public read(): void {
       this.data = fs
          .readFileSync(this.filename, {
             encoding: 'utf-8',

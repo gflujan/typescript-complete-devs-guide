@@ -15,7 +15,7 @@ import { dateStringToDate } from '../utils';
 type MatchData = [Date, string, string, number, number, MatchResult, string]; // this is a Tuple definition
 
 export class MatchReader extends CsvFileReader<MatchData> {
-   mapRow(row: Array<string>): MatchData {
+   public mapRow(row: Array<string>): MatchData {
       return [
          dateStringToDate(row[0]),
          row[1],

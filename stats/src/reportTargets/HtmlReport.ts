@@ -21,7 +21,7 @@ import { OutputTarget } from '../Summary';
 export class HtmlReport implements OutputTarget {
    constructor() {}
 
-   print(report: string): void {
+   public print(report: string): void {
       const html = `
          <div>
             <h1>Analysis Output</h1>

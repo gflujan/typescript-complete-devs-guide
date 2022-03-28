@@ -22,7 +22,7 @@ import { MatchResult } from '../MatchResult';
 export class WinsAnalysis implements Analyzer {
    constructor(public teamName: string) {}
 
-   run(matches: Array<MatchData>): string {
+   public run(matches: Array<MatchData>): string {
       let numWins = 0;
 
       for (let match of matches) {

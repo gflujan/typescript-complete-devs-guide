@@ -5,6 +5,7 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { CsvFileReader } from './CsvFileReader';
 // Assets
 // Constants / Models / Interfaces / Types
 import type { MatchData } from './MatchData';
@@ -19,11 +20,15 @@ interface DataReader {
 }
 
 export class MatchReader {
+   static fromCsv(filename: string): MatchReader {
+      return new MatchReader(new CsvFileReader(filename));
+   }
+
    public matches: Array<MatchData> = [];
 
    constructor(public reader: DataReader) {}
 
-   load(): void {
+   public load(): void {
       this.reader.read();
 
       this.matches = this.reader.data.map((row: Array<string>): MatchData => {
