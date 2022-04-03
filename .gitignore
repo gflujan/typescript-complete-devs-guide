@@ -1,3 +1,7 @@
 # Maps Project
 maps/.cache/
 maps/.parcel-cache/
+
+# Web Framework Project
+web/.cache/
+web/.parcel-cache/
