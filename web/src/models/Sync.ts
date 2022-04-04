@@ -15,7 +15,7 @@ import axios, { AxiosError, AxiosPromise } from 'axios';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 interface HasId {
-   id: number;
+   id?: number;
 }
 
 /* ========================================================================== */
