@@ -8,18 +8,20 @@ import axios, { AxiosError, AxiosPromise } from 'axios';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { UserProps } from './User';
 // Utils / Methods / Mocks
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+interface HasId {
+   id: number;
+}
 
 /* ========================================================================== */
 // DEFINING THE `SYNC` CLASS
 /* ========================================================================== */
-export class Sync {
+export class Sync<T extends HasId> {
    constructor(public rootUrl: string): void {}
 
    public fetch(id: number): AxiosPromise {
@@ -34,7 +36,7 @@ export class Sync {
       // });
    }
 
-   public save(data: UserProps): AxiosPromise {
+   public save(data: T): AxiosPromise {
       const { id } = data;
 
       if (id) {
