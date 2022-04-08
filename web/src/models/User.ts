@@ -37,7 +37,7 @@ export class User {
    }
 
    public set(update: UserProps): void {
-      // NOTE **[G]** :: Which version is/do I like "better" for me?
+      // NOTE **[G]** :: Which version is/(do I like) "better" for me?
       Object.assign(this.data, update);
       // this.data = { ...this.data, ...update };
    }
