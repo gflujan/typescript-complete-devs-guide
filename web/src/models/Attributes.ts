@@ -19,7 +19,7 @@
 export class Attributes<T> {
    constructor(private data: T): void {}
 
-   public get(keyOrIdx: string): string | number {
+   public get<K extends keyof T>(keyOrIdx: K): T[K] {
       return this.data[keyOrIdx];
    }
 
