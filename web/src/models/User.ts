@@ -21,12 +21,30 @@ export interface UserProps {
    name?: string;
 }
 
-const rootUrl = 'http://localhost:3000/users';
+const ROOT_URL = 'http://localhost:3000/users';
 
 /* ========================================================================== */
 // DEFINING THE `USER` CLASS
 /* ========================================================================== */
 export class User {
+   public attributes: Attributes<UserProps>;
    public events: Eventing = new Eventing();
-   public sync: Sync<UserProps> = new Sync<UserProps>(rootUrl);
+   public sync: Sync<UserProps> = new Sync<UserProps>(ROOT_URL);
+
+   constructor(props: UserProps): void {
+      this.attributes = new Attributes<UserProps>(props);
+   }
+
+   // These are the passthrough methods, no extra work needed
+   get get(): UserProps {
+      return this.attributes.get;
+   }
+
+   get on(): User['events']['on'] {
+      return this.events.on;
+   }
+
+   get trigger(): User['events']['trigger'] {
+      return this.events.trigger;
+   }
 }

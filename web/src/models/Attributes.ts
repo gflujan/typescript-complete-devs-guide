@@ -19,8 +19,8 @@
 export class Attributes<T> {
    constructor(private data: T): void {}
 
-   public get<K extends keyof T>(keyOrIdx: K): T[K] {
-      return this.data[keyOrIdx];
+   public get<K extends keyof T>(key: K): T[K] {
+      return this.data[key];
    }
 
    public set(newValues: T): void {
