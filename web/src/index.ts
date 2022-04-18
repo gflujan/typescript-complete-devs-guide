@@ -22,8 +22,15 @@ import { User } from './models/User';
 // user.set({ age: 100, name: 'bllr' });
 // user.save();
 
-// const newUser: User = new User({ age: 123, name: 'sloane' });
+const newUser: User = new User({ age: 123, name: 'sloane' });
 // newUser.save();
+console.log(newUser.get('name'));
+
+newUser.on('change', () => {
+   console.log('user was changed');
+});
+
+newUser.set({ age: 456 });
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

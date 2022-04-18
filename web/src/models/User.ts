@@ -5,6 +5,7 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { Attributes } from './Attributes';
 import { Eventing } from './Eventing';
 import { Sync } from './Sync';
 // Assets
@@ -47,4 +48,10 @@ export class User {
    get trigger(): User['events']['trigger'] {
       return this.events.trigger;
    }
+
+   // these are the custom methods (i.e. the ones that need extra work)
+   set = (update: UserProps): void => {
+      this.attributes.set(update);
+      this.events.trigger('change');
+   };
 }

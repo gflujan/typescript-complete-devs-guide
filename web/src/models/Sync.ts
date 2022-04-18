@@ -24,7 +24,7 @@ interface HasId {
 export class Sync<T extends HasId> {
    constructor(public rootUrl: string): void {}
 
-   public fetch(id: number): AxiosPromise {
+   public fetch = (id: number): AxiosPromise => {
       return axios.get(`${this.rootUrl}/${id}`);
       // .then((response: AxiosResponse) => {
       //    this.set(response.data);
@@ -34,9 +34,9 @@ export class Sync<T extends HasId> {
       //       error,
       //    });
       // });
-   }
+   };
 
-   public save(data: T): AxiosPromise {
+   public save = (data: T): AxiosPromise => {
       const { id } = data;
 
       if (id) {
@@ -60,5 +60,5 @@ export class Sync<T extends HasId> {
          //    });
          // });
       }
-   }
+   };
 }

@@ -19,13 +19,13 @@
 export class Attributes<T> {
    constructor(private data: T): void {}
 
-   public get<K extends keyof T>(key: K): T[K] {
+   public get = <K extends keyof T>(key: K): T[K] => {
       return this.data[key];
-   }
+   };
 
-   public set(newValues: T): void {
+   public set = (newValues: T): void => {
       // NOTE **[G]** :: Which version is/(do I like) "better" for me?
       Object.assign(this.data, newValues);
       // this.data = { ...this.data, ...newValues };
-   }
+   };
 }

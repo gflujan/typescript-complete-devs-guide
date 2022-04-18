@@ -23,13 +23,13 @@ export class Eventing {
 
    constructor(): void {}
 
-   public on(eventName: string, cb: Callback): void {
+   public on = (eventName: string, cb: Callback): void => {
       const handlers: Array<Callback> = this.events[eventName] ?? [];
       handlers.push(cb);
       this.events[eventName] = handlers;
-   }
+   };
 
-   public trigger(eventName: string): void {
+   public trigger = (eventName: string): void => {
       const handlers: Array<Callback> = this.events[eventName];
 
       if (handlers?.length) {
@@ -37,5 +37,5 @@ export class Eventing {
             cb();
          });
       }
-   }
+   };
 }
