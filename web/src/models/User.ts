@@ -3,6 +3,7 @@
 /* ========================================================================== */
 // React
 // Packages
+import { AxiosError, AxiosResponse } from 'axios';
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 import { Attributes } from './Attributes';
@@ -50,8 +51,26 @@ export class User {
    }
 
    // these are the custom methods (i.e. the ones that need extra work)
-   set = (update: UserProps): void => {
+   fetch(): void {
+      const id: number = this.get('id');
+
+      if (!id) {
+         throw new Error('ID not found in `attributes`. Cannot fetch user without one.');
+      }
+
+      this.sync
+         .fetch(id)
+         .then((response: AxiosResponse): void => {
+            console.info(`Successfully fetched user with ID #${id}`);
+            this.set(response.data);
+         })
+         .catch((error: AxiosError): void => {
+            console.error(`There was a problem retrieving the user info for ID #${id}.`);
+         });
+   }
+
+   set(update: UserProps): void {
       this.attributes.set(update);
-      this.events.trigger('change');
-   };
+      this.trigger('change');
+   }
 }
