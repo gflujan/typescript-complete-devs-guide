@@ -23,6 +23,10 @@ export class Attributes<T> {
       return this.data[key];
    };
 
+   public getAll(): T {
+      return this.data;
+   }
+
    public set = (newValues: T): void => {
       // NOTE **[G]** :: Which version is/(do I like) "better" for me?
       Object.assign(this.data, newValues);

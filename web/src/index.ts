@@ -18,13 +18,13 @@ import { User } from './models/User';
 /* ========================================================================== */
 // DEFINING THE `INDEX` FILE
 /* ========================================================================== */
-const user: User = new User({ id: 1 });
+// const user: User = new User({ name: 'Metal', age: 17 });
 
-user.on('change', () => {
-   console.log(user);
-});
+// user.on('save', () => {
+//    console.log(user);
+// });
 
-user.fetch();
+// user.save();
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

@@ -9,6 +9,11 @@
       "age": 123,
       "name": "sloane",
       "id": 2
+    },
+    {
+      "name": "Metal",
+      "age": 17,
+      "id": 3
     }
   ]
 }

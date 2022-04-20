@@ -51,7 +51,7 @@ export class User {
    }
 
    // these are the custom methods (i.e. the ones that need extra work)
-   fetch(): void {
+   public fetch(): void {
       const id: number = this.get('id');
 
       if (!id) {
@@ -61,15 +61,28 @@ export class User {
       this.sync
          .fetch(id)
          .then((response: AxiosResponse): void => {
-            console.info(`Successfully fetched user with ID #${id}`);
+            console.info(`Successfully fetched user with ID #${id}`, { response });
             this.set(response.data);
          })
          .catch((error: AxiosError): void => {
-            console.error(`There was a problem retrieving the user info for ID #${id}.`);
+            console.error(`There was a problem retrieving the user info for ID #${id}.`, { error });
          });
    }
 
-   set(update: UserProps): void {
+   public save(): void {
+      this.sync
+         .save(this.attributes.getAll())
+         .then((response: AxiosResponse): void => {
+            console.info('Successfully saved the user', { response });
+            this.trigger('save');
+         })
+         .catch((error: AxiosError): void => {
+            console.error('There was a problem saving the user', { error });
+            this.trigger('error');
+         });
+   }
+
+   public set(update: UserProps): void {
       this.attributes.set(update);
       this.trigger('change');
    }
