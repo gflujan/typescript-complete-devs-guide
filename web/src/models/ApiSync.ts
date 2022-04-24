@@ -21,7 +21,7 @@ interface HasId {
 /* ========================================================================== */
 // DEFINING THE `SYNC` CLASS
 /* ========================================================================== */
-export class Sync<T extends HasId> {
+export class ApiSync<T extends HasId> {
    constructor(public rootUrl: string): void {}
 
    public fetch = (id: number): AxiosPromise => {
