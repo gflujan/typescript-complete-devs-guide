@@ -44,18 +44,10 @@ export class Model<T extends HasId> {
       private sync: Sync<T>,
    ) {}
 
-   // These are the passthrough methods, no extra work needed
-   get get(): T {
-      return this.attributes.get;
-   }
-
-   get on(): User['events']['on'] {
-      return this.events.on;
-   }
-
-   get trigger(): User['events']['trigger'] {
-      return this.events.trigger;
-   }
+   // These are the shortened passthrough methods, no extra work needed
+   get = this.attributes.get;
+   on = this.events.on;
+   trigger = this.events.trigger;
 
    // these are the custom methods (i.e. the ones that need extra work)
    public fetch(): void {
