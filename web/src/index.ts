@@ -5,9 +5,10 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { Collection } from './models/Collection';
+import { ROOT_URL, User } from './models/User';
 // Assets
 // Constants / Models / Interfaces / Types
-import { User } from './models/User';
 // Utils / Methods / Mocks
 // Styles
 
@@ -18,13 +19,13 @@ import { User } from './models/User';
 /* ========================================================================== */
 // DEFINING THE `INDEX` FILE
 /* ========================================================================== */
-const user: User = User.buildUser({ id: 3 });
+const collection: Collection = new Collection(ROOT_URL);
 
-user.on('change', () => {
-   console.log(user);
+collection.on('change', () => {
+   console.log(collection);
 });
 
-user.fetch();
+collection.fetch();
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

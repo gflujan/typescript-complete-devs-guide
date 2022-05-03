@@ -23,7 +23,7 @@ export interface UserProps {
    name?: string;
 }
 
-const ROOT_URL = 'http://localhost:3000/users';
+export const ROOT_URL = 'http://localhost:3000/users';
 
 /* ========================================================================== */
 // DEFINING THE `USER` CLASS
