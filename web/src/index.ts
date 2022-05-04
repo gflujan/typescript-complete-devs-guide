@@ -6,7 +6,7 @@
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 import { Collection } from './models/Collection';
-import { ROOT_URL, User } from './models/User';
+import { ROOT_URL, User, UserProps } from './models/User';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -19,7 +19,7 @@ import { ROOT_URL, User } from './models/User';
 /* ========================================================================== */
 // DEFINING THE `INDEX` FILE
 /* ========================================================================== */
-const collection: Collection = new Collection(ROOT_URL);
+const collection: Collection = new Collection<User, UserProps>(ROOT_URL, User.buildUser);
 
 collection.on('change', () => {
    console.log(collection);

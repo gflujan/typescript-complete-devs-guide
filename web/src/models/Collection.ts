@@ -7,7 +7,6 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 import { Eventing } from './Eventing';
-import { User, UserProps } from './User';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -19,19 +18,18 @@ import { User, UserProps } from './User';
 /* ========================================================================== */
 // DEFINING THE `COLLECTION` CLASS
 /* ========================================================================== */
-export class Collection {
+export class Collection<T, K> {
    events: Eventing = new Eventing();
-   models: Array<User> = [];
+   models: Array<T> = [];
 
-   constructor(public rootUrl: string) {}
+   constructor(public rootUrl: string, public deserialize: (json: K) => T) {}
 
    fetch(): void {
       axios
          .get(this.rootUrl)
          .then((response: AxiosResponse) => {
             for (const record of response.data) {
-               const user = User.buildUser(record);
-               this.models.push(user);
+               this.models.push(this.deserialize(record));
             }
 
             this.trigger('change');
