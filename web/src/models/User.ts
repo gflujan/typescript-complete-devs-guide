@@ -7,6 +7,7 @@
 // Components / Classes / Controllers / Services
 import { ApiSync } from './ApiSync';
 import { Attributes } from './Attributes';
+import { Collection } from './Collection';
 import { Eventing } from './Eventing';
 // Assets
 // Constants / Models / Interfaces / Types
@@ -35,5 +36,9 @@ export class User extends Model<UserProps> {
          new Eventing(),
          new ApiSync<UserProps>(ROOT_URL),
       );
+   }
+
+   static buildUserCollection(): Collection<User, UserProps> {
+      return new Collection<User, UserProps>(ROOT_URL, User.buildUser);
    }
 }
