@@ -5,8 +5,7 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
-import { Collection } from './models/Collection';
-import { User } from './models/User';
+import { UserForm } from '../views/UserForm';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -19,13 +18,8 @@ import { User } from './models/User';
 /* ========================================================================== */
 // DEFINING THE `INDEX` FILE
 /* ========================================================================== */
-const collection: Collection = User.buildUserCollection();
-
-collection.on('change', () => {
-   console.log(collection);
-});
-
-collection.fetch();
+const userForm = new UserForm(document.getElementById('root'));
+userForm.render();
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

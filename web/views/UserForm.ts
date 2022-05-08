@@ -13,17 +13,33 @@
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+type EventsMap = { [key: string]: () => void };
+
 /* ========================================================================== */
 // DEFINING THE `USER FORM` CLASS
 /* ========================================================================== */
 export class UserForm {
    constructor(public parent: Element) {}
 
+   eventsMap(): EventsMap {
+      return {
+         'click:button': this.onClickButton,
+         // not using, just keeping them for reference
+         // 'hover:h1': this.onHoverHeader,
+         // 'drag:div': this.onDragDiv,
+      };
+   }
+
+   onClickButton(): void {
+      console.log('button has been clicked');
+   }
+
    template(): string {
       return `
          <div class="user-form">
             <h1>User Form</h1>
             <input />
+            <button>Click Me</button>
          </div>
       `;
    }
