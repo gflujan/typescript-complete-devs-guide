@@ -21,17 +21,38 @@ type EventsMap = { [key: string]: () => void };
 export class UserForm {
    constructor(public parent: Element) {}
 
-   eventsMap(): EventsMap {
+   bindEvents(fragment: DocumentFragment): void {
+      for (let eventKey in this.eventsMap) {
+         const [eventName, selector] = eventKey.split(':');
+
+         fragment.querySelectorAll(selector).forEach(element => {
+            element.addEventListener(eventName, this.eventsMap[eventKey]);
+         });
+      }
+   }
+
+   get eventsMap(): EventsMap {
       return {
          'click:button': this.onClickButton,
+         'mouseenter:h1': this.onHeaderHover,
          // not using, just keeping them for reference
-         // 'hover:h1': this.onHoverHeader,
          // 'drag:div': this.onDragDiv,
       };
    }
 
    onClickButton(): void {
       console.log('button has been clicked');
+   }
+
+   onHeaderHover(): void {
+      console.log('header has been hovered');
+   }
+
+   render(): void {
+      const templateElement = document.createElement('template');
+      templateElement.innerHTML = this.template();
+      this.bindEvents(templateElement.content);
+      this.parent.appendChild(templateElement.content);
    }
 
    template(): string {
@@ -42,11 +63,5 @@ export class UserForm {
             <button>Click Me</button>
          </div>
       `;
-   }
-
-   render(): void {
-      const templateElement = document.createElement('template');
-      templateElement.innerHTML = this.template();
-      this.parent.appendChild(templateElement.content);
    }
 }
