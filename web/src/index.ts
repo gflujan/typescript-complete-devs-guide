@@ -5,7 +5,8 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
-import { UserForm } from '../views/UserForm';
+import { User } from './models/User';
+import { UserForm } from './views/UserForm';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -18,7 +19,8 @@ import { UserForm } from '../views/UserForm';
 /* ========================================================================== */
 // DEFINING THE `INDEX` FILE
 /* ========================================================================== */
-const userForm = new UserForm(document.getElementById('root'));
+const user: User = User.buildUser({ name: 'Stephen Curry', age: 34 });
+const userForm = new UserForm(document.getElementById('root'), user);
 userForm.render();
 
 /* ========================================================================== */
