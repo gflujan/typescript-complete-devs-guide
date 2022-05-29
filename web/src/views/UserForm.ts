@@ -7,6 +7,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { EventsMap } from '../models/_general';
 import { User, UserProps } from '../models/User';
 import { View } from './View';
 // Utils / Methods / Mocks
@@ -15,8 +16,6 @@ import { View } from './View';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-export type EventsMap = { [key: string]: () => void };
-
 /* ========================================================================== */
 // DEFINING THE `USER FORM` CLASS
 /* ========================================================================== */

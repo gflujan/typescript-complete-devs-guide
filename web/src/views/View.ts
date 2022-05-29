@@ -8,7 +8,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { EventsMap } from './UserForm';
+import { EventsMap } from '../models/_general';
 import { Model } from '../models/Model';
 // Utils / Methods / Mocks
 // Styles
