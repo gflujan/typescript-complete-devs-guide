@@ -6,7 +6,7 @@
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 import { User } from './models/User';
-import { UserForm } from './views/UserForm';
+import { UserEdit } from './views/UserEdit';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks
@@ -23,8 +23,9 @@ const user: User = User.buildUser({ name: 'Stephen Curry', age: 34 });
 const root = document.getElementById('root');
 
 if (root) {
-   const userForm = new UserForm(root, user);
-   userForm.render();
+   const userEdit = new UserEdit(root, user);
+   userEdit.render();
+   console.debug(userEdit);
 } else {
    throw new Error('Root element not found!');
 }

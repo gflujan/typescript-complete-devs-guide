@@ -8,6 +8,7 @@
 import { View } from './View';
 // Assets
 // Constants / Models / Interfaces / Types
+import { RegionsMap } from '../models/_general';
 import { User, UserProps } from '../models/User';
 // Utils / Methods / Mocks
 // Styles
@@ -19,7 +20,14 @@ import { User, UserProps } from '../models/User';
 // DEFINING THE `USER EDIT` CLASS
 /* ========================================================================== */
 export class UserEdit extends View<User, UserProps> {
-   constructor() {}
+   // constructor() {}
+
+   regionsMap(): RegionsMap {
+      return {
+         userForm: '.user-form',
+         userShow: '.user-show',
+      };
+   }
 
    template(): string {
       return `

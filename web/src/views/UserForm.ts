@@ -20,6 +20,8 @@ import { View } from './View';
 // DEFINING THE `USER FORM` CLASS
 /* ========================================================================== */
 export class UserForm extends View<User, UserProps> {
+   // constructor() {}
+
    get eventsMap(): EventsMap {
       return {
          'click:.save-model': this.onSaveModelClick,
