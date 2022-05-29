@@ -14,6 +14,16 @@
       "name": "Metal",
       "age": 17,
       "id": 3
+    },
+    {
+      "name": "Stephen Curry",
+      "age": 34,
+      "id": 4
+    },
+    {
+      "name": "Stephen Curry",
+      "age": 34,
+      "id": 5
     }
   ]
 }
