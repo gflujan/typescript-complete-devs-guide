@@ -61,6 +61,8 @@ export abstract class View<T extends Model<K>, K> {
       }
    }
 
+   onRender(): void {}
+
    regionsMap(): RegionsMap {
       return {};
    }
@@ -71,6 +73,7 @@ export abstract class View<T extends Model<K>, K> {
       templateElement.innerHTML = this.template();
       this.bindEvents(templateElement.content);
       this.mapRegions(templateElement.content);
+      this.onRender();
       this.parent.appendChild(templateElement.content);
    }
 }

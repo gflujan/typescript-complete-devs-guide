@@ -25,7 +25,7 @@ const root = document.getElementById('root');
 if (root) {
    const userEdit = new UserEdit(root, user);
    userEdit.render();
-   console.debug(userEdit);
+   // console.debug(userEdit);
 } else {
    throw new Error('Root element not found!');
 }

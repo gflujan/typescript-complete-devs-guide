@@ -5,6 +5,8 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
+import { UserForm } from './UserForm';
+import { UserShow } from './UserShow';
 import { View } from './View';
 // Assets
 // Constants / Models / Interfaces / Types
@@ -21,6 +23,14 @@ import { User, UserProps } from '../models/User';
 /* ========================================================================== */
 export class UserEdit extends View<User, UserProps> {
    // constructor() {}
+
+   onRender(): void {
+      const userForm = new UserForm(this.regions.userForm, this.model);
+      userForm.render();
+
+      const userShow = new UserShow(this.regions.userShow, this.model);
+      userShow.render();
+   }
 
    regionsMap(): RegionsMap {
       return {
