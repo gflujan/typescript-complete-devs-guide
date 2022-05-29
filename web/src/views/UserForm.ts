@@ -15,7 +15,7 @@ import { View } from './View';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-type EventsMap = { [key: string]: () => void };
+export type EventsMap = { [key: string]: () => void };
 
 /* ========================================================================== */
 // DEFINING THE `USER FORM` CLASS

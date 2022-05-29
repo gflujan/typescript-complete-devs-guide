@@ -8,6 +8,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { EventsMap } from './UserForm';
 import { Model } from '../models/Model';
 // Utils / Methods / Mocks
 // Styles
@@ -23,7 +24,6 @@ export abstract class View<T extends Model<K>, K> {
       this.bindModel();
    }
 
-   abstract eventsMap(): { [key: string]: () => void };
    abstract template(): string;
 
    bindEvents(fragment: DocumentFragment): void {
@@ -40,6 +40,10 @@ export abstract class View<T extends Model<K>, K> {
       this.model.on('change', () => {
          this.render();
       });
+   }
+
+   eventsMap(): EventsMap {
+      return {};
    }
 
    render(): void {
