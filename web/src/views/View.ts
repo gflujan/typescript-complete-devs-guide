@@ -8,7 +8,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { EventsMap } from '../models/_general';
+import { EventsMap, Regions, RegionsMap } from '../models/_general';
 import { Model } from '../models/Model';
 // Utils / Methods / Mocks
 // Styles
@@ -20,6 +20,8 @@ import { Model } from '../models/Model';
 // DEFINING THE `VIEW` CLASS
 /* ========================================================================== */
 export abstract class View<T extends Model<K>, K> {
+   regions: Regions = {};
+
    constructor(public parent: Element, public model: T) {
       this.bindModel();
    }
@@ -46,11 +48,29 @@ export abstract class View<T extends Model<K>, K> {
       return {};
    }
 
+   mapRegions(fragment: DocumentFragment): void {
+      const regionsMap = this.regionsMap();
+
+      for (let key in regionsMap) {
+         const selector = regionsMap[key];
+         const element = fragment.querySelector(selector);
+
+         if (element) {
+            this.regions[key] = element;
+         }
+      }
+   }
+
+   regionsMap(): RegionsMap {
+      return {};
+   }
+
    render(): void {
       this.parent.innerHTML = '';
       const templateElement = document.createElement('template');
       templateElement.innerHTML = this.template();
       this.bindEvents(templateElement.content);
+      this.mapRegions(templateElement.content);
       this.parent.appendChild(templateElement.content);
    }
 }
