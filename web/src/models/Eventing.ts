@@ -16,7 +16,7 @@
 type Callback = () => void;
 
 /* ========================================================================== */
-// DEFINING THE `EVENTING` CLASS
+// DEFINING THE `EVENTING` MODEL
 /* ========================================================================== */
 export class Eventing {
    events: { [key: string]: Array<Callback> } = {};

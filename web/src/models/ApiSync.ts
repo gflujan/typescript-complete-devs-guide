@@ -19,7 +19,7 @@ interface HasId {
 }
 
 /* ========================================================================== */
-// DEFINING THE `SYNC` CLASS
+// DEFINING THE `API SYNC` MODEL
 /* ========================================================================== */
 export class ApiSync<T extends HasId> {
    constructor(public rootUrl: string): void {}

@@ -14,7 +14,7 @@
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `ATTRIBUTES` CLASS
+// DEFINING THE `ATTRIBUTES` MODEL
 /* ========================================================================== */
 export class Attributes<T> {
    constructor(private data: T): void {}

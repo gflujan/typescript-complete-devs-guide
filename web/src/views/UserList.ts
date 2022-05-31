@@ -5,12 +5,12 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
-import { Collection } from './models/Collection';
-import { ROOT_URL, User } from './models/User';
-import { UserList } from './views/UserList';
+import { CollectionView } from './CollectionView';
+import { UserShow } from './UserShow';
 // Assets
 // Constants / Models / Interfaces / Types
-import { UserProps } from './models/general';
+import { User } from '../models/User';
+import { UserProps } from '../models/general';
 // Utils / Methods / Mocks
 // Styles
 
@@ -18,24 +18,13 @@ import { UserProps } from './models/general';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `INDEX` FILE
+// DEFINING THE `USER LIST` COMPONENT
 /* ========================================================================== */
-const users: Collection<User, UserProps> = new Collection<User, UserProps>(
-   ROOT_URL,
-   (userData: UserProps) => {
-      return User.buildUser(userData);
-   },
-);
-
-users.on('change', () => {
-   const root = document.getElementById('root');
-
-   if (root) {
-      new UserList(root, users).render();
+export class UserList extends CollectionView<User, UserProps> {
+   renderItem(model: User, itemParent: Element): void {
+      new UserShow(itemParent, model).render();
    }
-});
-
-users.fetch();
+}
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

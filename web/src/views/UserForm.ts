@@ -7,8 +7,8 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { EventsMap } from '../models/_general';
-import { User, UserProps } from '../models/User';
+import { EventsMap, UserProps } from '../models/general';
+import { User } from '../models/User';
 import { View } from './View';
 // Utils / Methods / Mocks
 // Styles
@@ -17,7 +17,7 @@ import { View } from './View';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `USER FORM` CLASS
+// DEFINING THE `USER FORM` COMPONENT
 /* ========================================================================== */
 export class UserForm extends View<User, UserProps> {
    // constructor() {}

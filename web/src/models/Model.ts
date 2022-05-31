@@ -35,7 +35,7 @@ interface Sync<T> {
 }
 
 /* ========================================================================== */
-// DEFINING THE `MODEL` CLASS
+// DEFINING THE `MODEL` MODEL
 /* ========================================================================== */
 export class Model<T extends HasId> {
    constructor(

@@ -1,14 +1,13 @@
 /* ========================================================================== */
 // ALL REQUIRED IMPORTS
 /* ========================================================================== */
-
 // React
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { EventsMap, Regions, RegionsMap } from '../models/_general';
+import { EventsMap, Regions, RegionsMap } from '../models/general';
 import { Model } from '../models/Model';
 // Utils / Methods / Mocks
 // Styles
@@ -17,7 +16,7 @@ import { Model } from '../models/Model';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `VIEW` CLASS
+// DEFINING THE `VIEW` COMPONENT
 /* ========================================================================== */
 export abstract class View<T extends Model<K>, K> {
    regions: Regions = {};

@@ -16,7 +16,7 @@ import { Eventing } from './Eventing';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `COLLECTION` CLASS
+// DEFINING THE `COLLECTION` MODEL
 /* ========================================================================== */
 export class Collection<T, K> {
    events: Eventing = new Eventing();

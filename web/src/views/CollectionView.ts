@@ -5,12 +5,9 @@
 // Packages
 // Context / Store / Router
 // Components / Classes / Controllers / Services
-import { Collection } from './models/Collection';
-import { ROOT_URL, User } from './models/User';
-import { UserList } from './views/UserList';
 // Assets
 // Constants / Models / Interfaces / Types
-import { UserProps } from './models/general';
+import { Collection } from "../models/Collection";
 // Utils / Methods / Mocks
 // Styles
 
@@ -18,24 +15,26 @@ import { UserProps } from './models/general';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `INDEX` FILE
+// DEFINING THE `COLLECTION VIEW` COMPONENT
 /* ========================================================================== */
-const users: Collection<User, UserProps> = new Collection<User, UserProps>(
-   ROOT_URL,
-   (userData: UserProps) => {
-      return User.buildUser(userData);
-   },
-);
+export abstract class CollectionView<T, K> {
+   constructor(public parent: Element, public collection: Collection<T, K>) {}
 
-users.on('change', () => {
-   const root = document.getElementById('root');
+   abstract renderItem(model: T, itemParent: Element): void;
 
-   if (root) {
-      new UserList(root, users).render();
+   render(): void {
+      this.parent.innerHTML = '';
+      const templateElement = document.createElement('template');
+
+      for (let model of this.collection.models) {
+         const itemParent = document.createElement('div');
+         this.renderItem(model, itemParent);
+         templateElement.content.append(itemParent);
+      }
+
+      this.parent.append(templateElement.content);
    }
-});
-
-users.fetch();
+}
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS

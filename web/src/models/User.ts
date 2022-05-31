@@ -12,22 +12,17 @@ import { Eventing } from './Eventing';
 // Assets
 // Constants / Models / Interfaces / Types
 import { Model } from './Model';
+import { UserProps } from './general'
 // Utils / Methods / Mocks
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-export interface UserProps {
-   age?: number;
-   id?: number;
-   name?: string;
-}
-
 export const ROOT_URL = 'http://localhost:3000/users';
 
 /* ========================================================================== */
-// DEFINING THE `USER` CLASS
+// DEFINING THE `USER` MODEL
 /* ========================================================================== */
 export class User extends Model<UserProps> {
    static buildUser(attrs: UserProps): User {

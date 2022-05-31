@@ -10,8 +10,8 @@ import { UserShow } from './UserShow';
 import { View } from './View';
 // Assets
 // Constants / Models / Interfaces / Types
-import { RegionsMap } from '../models/_general';
-import { User, UserProps } from '../models/User';
+import { RegionsMap, UserProps } from '../models/general';
+import { User } from '../models/User';
 // Utils / Methods / Mocks
 // Styles
 
@@ -19,7 +19,7 @@ import { User, UserProps } from '../models/User';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE `USER EDIT` CLASS
+// DEFINING THE `USER EDIT` COMPONENT
 /* ========================================================================== */
 export class UserEdit extends View<User, UserProps> {
    // constructor() {}

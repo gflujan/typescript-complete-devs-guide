@@ -8,7 +8,8 @@
 import { View } from './View';
 // Assets
 // Constants / Models / Interfaces / Types
-import { User, UserProps } from '../models/User';
+import { UserProps } from '../models/general';
+import { User } from '../models/User';
 // Utils / Methods / Mocks
 // Styles
 
@@ -16,6 +17,7 @@ import { User, UserProps } from '../models/User';
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
+// DEFINING THE `USER SHOW` COMPONENT
 /* ========================================================================== */
 export class UserShow extends View<User, UserProps> {
    // constructor() {}
