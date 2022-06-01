@@ -3,9 +3,8 @@
 /* ========================================================================== */
 // React
 // Packages
-import express from 'express';
+import { Router } from 'express';
 // Context / Store / Router
-import { router } from './routes/login-routes';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
@@ -16,17 +15,16 @@ import { Request, Response } from 'express';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-const app = express();
+const router: Router = Router();
 
 /* ========================================================================== */
-// DEFINING THE `INDEX ENTRY POINT` FILE
+// DEFINING THE `LOGIN ROUTES` HELPERS
 /* ========================================================================== */
-app.use(router);
-
-app.listen(3000, () => {
-   console.debug('Listening on port 3000');
+router.get('/', (req: Request, res: Response) => {
+   res.send('puto says que?');
 });
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
+export { router };
