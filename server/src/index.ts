@@ -3,6 +3,7 @@
 /* ========================================================================== */
 // React
 // Packages
+import bodyParser from 'body-parser';
 import express from 'express';
 // Context / Store / Router
 import { router } from './routes/login-routes';
@@ -21,6 +22,7 @@ const app = express();
 /* ========================================================================== */
 // DEFINING THE `INDEX ENTRY POINT` FILE
 /* ========================================================================== */
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(router);
 
 app.listen(3000, () => {
