@@ -17,14 +17,31 @@ import { Request, Response } from 'express';
 /* ========================================================================== */
 const router: Router = Router();
 
+interface RequestWithBody extends Request {
+   body: { [key: string]: string | undefined };
+}
+
+const validCreds = (email: string, password: string): boolean => {
+   return email && password && email === 'bllr@example.com' && password === '12345';
+};
+
 /* ========================================================================== */
 // DEFINING THE `LOGIN ROUTES` HELPERS
 /* ========================================================================== */
-router.get('/', (req: Request, res: Response) => {
-   res.send('nothing to see here. shove off!');
+router.get('/', (req: RequestWithBody, res: Response) => {
+   if (req.session.loggedIn) {
+      res.send('eyyyy, congrats! you are logged in!');
+   } else {
+      res.send(`
+         <div>
+            <p>nothing to see here. shove off!</p>
+            <button class="" onClick="" type="button">unless, login?</button>
+         </div>
+      `);
+   }
 });
 
-router.get('/login', (req: Request, res: Response) => {
+router.get('/login', (req: RequestWithBody, res: Response) => {
    res.send(`
       <form method="POST" action="/login">
          <div>
@@ -40,9 +57,15 @@ router.get('/login', (req: Request, res: Response) => {
    `);
 });
 
-router.post('/login', (req: Request, res: Response) => {
+router.post('/login', (req: RequestWithBody, res: Response) => {
    const { email, password } = req.body;
-   res.send(email + password);
+
+   if (validCreds(email, password)) {
+      req.session = { loggedIn: true };
+      res.redirect('/');
+   } else {
+      res.send('invalid credentials');
+   }
 });
 
 /* ========================================================================== */
