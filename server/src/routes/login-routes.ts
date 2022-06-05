@@ -8,13 +8,29 @@ import { Router } from 'express';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 // Utils / Methods / Mocks
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+const requireAuth = (request: Request, response: Response, next: NextFunction): void => {
+   if (request.session?.loggedIn) {
+      next();
+      return;
+   }
+
+   response.status(403);
+
+   response.send(`
+      <div>
+         <p>You shall not pass!</p>
+         <a href="/login">Try logging in instead?</a>
+      </div>
+   `);
+};
+
 const router: Router = Router();
 
 interface RequestWithBody extends Request {
@@ -28,21 +44,33 @@ const validCreds = (email: string, password: string): boolean => {
 /* ========================================================================== */
 // DEFINING THE `LOGIN ROUTES` HELPERS
 /* ========================================================================== */
-router.get('/', (req: RequestWithBody, res: Response) => {
-   if (req.session.loggedIn) {
-      res.send('eyyyy, congrats! you are logged in!');
-   } else {
-      res.send(`
+router.get('/', (request: RequestWithBody, response: Response) => {
+   if (request.session?.loggedIn) {
+      response.send(`
          <div>
+            <div>You are logged in</div>
+            <p><a href="/logout">Logout</a></p>
+            <div>
+               <a href="/protected">Protected Route</a>
+            </div>
+         </div>
+      `);
+   } else {
+      response.send(`
+            <div>
+            <div>You are not logged in</div>
             <p>nothing to see here. shove off!</p>
-            <button class="" onClick="" type="button">unless, login?</button>
+            <p><a href="/login">Or login, if you dare! mwahahaha</a></p>
+            <div>
+               <a href="/protected">Protected Route</a>
+            </div>
          </div>
       `);
    }
 });
 
-router.get('/login', (req: RequestWithBody, res: Response) => {
-   res.send(`
+router.get('/login', (request: RequestWithBody, response: Response) => {
+   response.send(`
       <form method="POST" action="/login">
          <div>
             <label for="">Email</label>
@@ -53,19 +81,34 @@ router.get('/login', (req: RequestWithBody, res: Response) => {
             <input class="" name="password" placeholder="*******" type="password" value="" />
          </div>
          <button class="" type="submit">Submit</button>
+         <p><a href="/">Go back home</a></p>
       </form>
    `);
 });
 
-router.post('/login', (req: RequestWithBody, res: Response) => {
-   const { email, password } = req.body;
+router.post('/login', (request: RequestWithBody, response: Response) => {
+   const { email, password } = request.body;
 
    if (validCreds(email, password)) {
-      req.session = { loggedIn: true };
-      res.redirect('/');
+      request.session = { loggedIn: true };
+      response.redirect('/');
    } else {
-      res.send('invalid credentials');
+      response.send('invalid credentials');
    }
+});
+
+router.get('/logout', (request: Request, response: Response) => {
+   request.session = undefined;
+   response.redirect('/');
+});
+
+router.get('/protected', requireAuth, (request: Request, response: Response) => {
+   response.send(`
+      <div>
+         <div>welcome to protected route</div>
+         <a href="/logout">Logout</a>
+      </div>
+   `);
 });
 
 /* ========================================================================== */

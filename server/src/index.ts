@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
    .use(router); // <-- this should always be last after any middlewares
 
 app.listen(3000, () => {
-   console.debug('Listening on port 3000');
+   console.info('Listening on port 3000');
 });
 
 /* ========================================================================== */
