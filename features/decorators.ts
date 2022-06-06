@@ -9,12 +9,21 @@ class Boat {
 
    @testDecorator
    pilot(): void {
+      throw new Error();
       console.log('swish');
    }
 }
 
-function testDecorator(target: any, key: string, pd: PropertyDescriptor): void {
-   console.log('Target:', target);
-   console.log('Key:', key);
-   console.log('PD:', pd);
+function testDecorator(target: any, key: string, desc: PropertyDescriptor): void {
+   const method = desc.value;
+
+   desc.value = function() {
+      try {
+         method();
+      } catch (e) {
+         console.log('Oops, the boat sank! wah-wah-wah');
+      }
+   }
 }
+
+new Boat().pilot();
