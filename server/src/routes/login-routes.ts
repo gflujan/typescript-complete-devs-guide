@@ -38,7 +38,7 @@ interface RequestWithBody extends Request {
 }
 
 const validCreds = (email: string, password: string): boolean => {
-   return email && password && email === 'bllr@example.com' && password === '12345';
+   return email && email === 'bllr@example.com' && password && password === '12345';
 };
 
 /* ========================================================================== */
