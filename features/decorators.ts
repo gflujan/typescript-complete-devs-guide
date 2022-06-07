@@ -1,3 +1,4 @@
+@classDeco
 class Boat {
    @getProperty
    color: string = 'red';
@@ -11,10 +12,18 @@ class Boat {
 
    @getProperty
    @logError('Bllr sunk the ship!')
-   pilot(): void {
+   pilot(@paramDeco speed: number, @paramDeco makesWake: boolean): void {
       throw new Error();
       console.log('swish');
    }
+}
+
+function classDeco(constructor: typeof Boat) {
+   console.log('Class Decos:', constructor);
+}
+
+function paramDeco(target: any, key: string, index: number) {
+   console.log('Param Decos:', key, index);
 }
 
 function getProperty(target: any, key: string) {
