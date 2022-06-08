@@ -31,7 +31,7 @@ const requireAuth = (request: Request, response: Response, next: NextFunction): 
    response.send(`
       <div>
          <p>You shall not pass!</p>
-         <a href="/login">Try logging in instead?</a>
+         <a href="/auth/login">Try logging in instead?</a>
       </div>
    `);
 };
@@ -59,7 +59,7 @@ router.get('/', (request: RequestWithBody, response: Response) => {
             <div>
             <div>You are not logged in</div>
             <p>nothing to see here. shove off!</p>
-            <p><a href="/login">Or login, if you dare! mwahahaha</a></p>
+            <p><a href="/auth/login">Or login, if you dare! mwahahaha</a></p>
             <div>
                <a href="/protected">Protected Route</a>
             </div>
@@ -68,7 +68,7 @@ router.get('/', (request: RequestWithBody, response: Response) => {
    }
 });
 
-router.post('/login', (request: RequestWithBody, response: Response) => {
+router.post('/auth/login', (request: RequestWithBody, response: Response) => {
    const { email, password } = request.body;
 
    if (validCreds(email, password)) {

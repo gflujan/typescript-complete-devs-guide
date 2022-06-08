@@ -7,8 +7,8 @@ import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import express from 'express';
 // Context / Stores / Routers
+import { AppRouter } from './AppRouter';
 import { router } from './routes/login-routes';
-import { router as controllerRouter } from './controllers/decorators/controller';
 // Components / Classes / Controllers / Services
 import './controllers/LoginController';
 // Assets
@@ -28,15 +28,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
    .use(cookieSession({ keys: ['secret'] }))
    .use(router) // <-- this should always be last/after any middlewares
-   .use(controllerRouter);
+   .use(AppRouter.instance);
 
 app.listen(3000, () => {
    console.info('Listening on port 3000');
 });
-
-console.debug('🚀--BLLR?: ===============================================');
-console.debug(LoginController);
-console.debug('🚀--BLLR?: ===============================================');
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
