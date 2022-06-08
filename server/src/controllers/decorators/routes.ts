@@ -4,11 +4,11 @@
 // React
 // Packages
 import 'reflect-metadata';
-// Context / Store / Router
+// Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-// Utils / Methods / Mocks
+// Utils / Methods / Mocks / Decorators
 // Styles
 
 /* ========================================================================== */

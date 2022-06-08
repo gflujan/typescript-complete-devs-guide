@@ -5,7 +5,7 @@
 // Packages
 import 'reflect-metadata';
 import { Router } from 'express';
-// Context / Store / Router
+// Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types

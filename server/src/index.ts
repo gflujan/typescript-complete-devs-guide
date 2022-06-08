@@ -6,7 +6,7 @@
 import bodyParser from 'body-parser';
 import cookieSession from 'cookie-session';
 import express from 'express';
-// Context / Store / Router
+// Context / Stores / Routers
 import { router } from './routes/login-routes';
 import { router as controllerRouter } from './controllers/decorators/controller';
 // Components / Classes / Controllers / Services
