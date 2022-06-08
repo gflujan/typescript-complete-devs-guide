@@ -1,26 +1,24 @@
 import 'reflect-metadata';
 
-const plane = { color: 'red' };
+@printMetadata
+class Plane {
+   color: string = 'red';
 
-/* ========================================================================== */
-// These examples are assigning metadata to an object
-/* ========================================================================== */
-Reflect.defineMetadata('note', 'hi there', plane);
-// effectively the same as: { color: 'red', note: 'hi there' }
-// except that the note property is not actually visible when debugging or logging this object
-Reflect.defineMetadata('height', 10, plane);
+   @markFunction('shut yo mouf')
+   fly(): void {
+      console.log('vroom');
+   }
+}
 
-// console.log(plane); // 'note' does not get logged out
+function markFunction(secretInfo: string) {
+   return function (target: Plane, key: string) {
+      Reflect.defineMetadata('secret', secretInfo, target, key);
+   };
+}
 
-const note = Reflect.getMetadata('note', plane);
-console.log(note); // now we see 'hi there'
-
-const height = Reflect.getMetadata('height', plane);
-console.log(height);
-
-/* ========================================================================== */
-// These examples are assigning metadata to an object's property
-/* ========================================================================== */
-Reflect.defineMetadata('type', 'color string name', plane, 'color');
-const type = Reflect.getMetadata('type', plane, 'color');
-console.log(type);
+function printMetadata(target: typeof Plane) {
+   for (let key in target.prototype) {
+      const secret = Reflect.getMetadata('secret', target.prototype, key);
+      console.log(secret);
+   }
+}
