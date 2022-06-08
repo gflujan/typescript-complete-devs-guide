@@ -10,6 +10,7 @@ import { NextFunction, Request, Response, Router } from 'express';
 // Constants / Models / Interfaces / Types
 import { RequestWithBody } from '../routes/login-routes';
 // Utils / Methods / Mocks / Decorators
+import { Controller } from './decorators/controller';
 import { Get } from './decorators/routes';
 // Styles
 
@@ -19,7 +20,7 @@ import { Get } from './decorators/routes';
 /* ========================================================================== */
 // DEFINING THE `LOGIN CONTROLLER` CLASS
 /* ========================================================================== */
-@Controller('/')
+@Controller('/auth')
 class LoginController {
    constructor() {}
 
