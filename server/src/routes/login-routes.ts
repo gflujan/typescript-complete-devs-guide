@@ -3,18 +3,23 @@
 /* ========================================================================== */
 // React
 // Packages
-import { Router } from 'express';
+import { NextFunction, Request, Response, Router } from 'express';
 // Context / Store / Router
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { NextFunction, Request, Response } from 'express';
 // Utils / Methods / Mocks
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+export interface RequestWithBody extends Request {
+   body: { [key: string]: string | undefined };
+}
+
+const router: Router = Router();
+
 const requireAuth = (request: Request, response: Response, next: NextFunction): void => {
    if (request.session?.loggedIn) {
       next();
@@ -30,12 +35,6 @@ const requireAuth = (request: Request, response: Response, next: NextFunction): 
       </div>
    `);
 };
-
-const router: Router = Router();
-
-interface RequestWithBody extends Request {
-   body: { [key: string]: string | undefined };
-}
 
 const validCreds = (email: string, password: string): boolean => {
    return email && email === 'bllr@example.com' && password && password === '12345';
@@ -67,23 +66,6 @@ router.get('/', (request: RequestWithBody, response: Response) => {
          </div>
       `);
    }
-});
-
-router.get('/login', (request: RequestWithBody, response: Response) => {
-   response.send(`
-      <form method="POST" action="/login">
-         <div>
-            <label for="">Email</label>
-            <input class="" name="email" placeholder="yourname@example.com" type="text" value="" />
-         </div>
-         <div>
-            <label for="">Password</label>
-            <input class="" name="password" placeholder="*******" type="password" value="" />
-         </div>
-         <button class="" type="submit">Submit</button>
-         <p><a href="/">Go back home</a></p>
-      </form>
-   `);
 });
 
 router.post('/login', (request: RequestWithBody, response: Response) => {
