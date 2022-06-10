@@ -19,7 +19,7 @@ import { MetadataKeys } from './models';
 // DEFINING THE `BODY VALIDATOR` DECORATOR
 /* ========================================================================== */
 // NOTE :: `BodyValidator` is the "decorator factory"
-export function bodyValidator(...keys: string[]) {
+export function BodyValidator(...keys: string[]) {
    // NOTE :: this is the actual decorator
    return function (target: any, key: string, desc: PropertyDescriptor) {
       Reflect.defineMetadata(MetadataKeys.Validator, keys, target, key);

@@ -36,10 +36,6 @@ const requireAuth = (request: Request, response: Response, next: NextFunction): 
    `);
 };
 
-const validCreds = (email?: string, password?: string): boolean => {
-   return Boolean(email && email === 'bllr@example.com' && password && password === '12345');
-};
-
 /* ========================================================================== */
 // DEFINING THE `LOGIN ROUTES` HELPERS
 /* ========================================================================== */
@@ -65,21 +61,6 @@ router.get('/', (request: RequestWithBody, response: Response) => {
             </div>
          </div>
       `);
-   }
-});
-
-router.post('/login', (request: RequestWithBody, response: Response) => {
-   const { email, password } = request.body;
-
-   if (!email || !password) {
-      response.send('stuff');
-   }
-
-   if (validCreds(email, password)) {
-      request.session = { loggedIn: true };
-      response.redirect('/');
-   } else {
-      response.send('invalid credentials');
    }
 });
 
