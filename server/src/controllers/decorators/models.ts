@@ -16,6 +16,11 @@
 /* ========================================================================== */
 // DEFINING THE METHODS GLOBALLY
 /* ========================================================================== */
+export enum MetadataKeys {
+   Method = 'method',
+   Path = 'path',
+}
+
 export enum Methods {
    Delete = 'delete',
    Get = 'get',

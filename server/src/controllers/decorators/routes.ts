@@ -8,7 +8,7 @@ import 'reflect-metadata';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { Methods } from './methods';
+import { MetadataKeys, Methods } from './models';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -21,8 +21,8 @@ import { Methods } from './methods';
 function routeBinder(method: string) {
    return function (path: string) {
       return function (target: any, key: string, desc: PropertyDescriptor) {
-         Reflect.defineMetadata('path', path, target, key);
-         Reflect.defineMetadata('method', method, target, key);
+         Reflect.defineMetadata(MetadataKeys.Path, path, target, key);
+         Reflect.defineMetadata(MetadataKeys.Method, method, target, key);
       };
    };
 }

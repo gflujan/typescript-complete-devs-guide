@@ -10,7 +10,7 @@ import { AppRouter } from '../../AppRouter';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { Methods } from './methods';
+import { MetadataKeys, Methods } from './models';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -26,8 +26,13 @@ export function Controller(routePrefix: string) {
 
       for (const methodName in target.prototype) {
          const routeHandler = target.prototype[methodName];
-         const method: Methods = Reflect.getMetadata('method', target.prototype, methodName);
-         const path: string = Reflect.getMetadata('path', target.prototype, methodName);
+         const path: string = Reflect.getMetadata(MetadataKeys.Path, target.prototype, methodName);
+
+         const method: Methods = Reflect.getMetadata(
+            MetadataKeys.Method,
+            target.prototype,
+            methodName,
+         );
 
          if (method && path) {
             router[method](`${routePrefix}${path}`, routeHandler);
