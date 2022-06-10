@@ -8,11 +8,15 @@ import 'reflect-metadata';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { Methods } from './methods';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
 /* ========================================================================== */
-// DEFINING THE ROUTE DECORATORS
+// INTERNAL HELPERS, INTERFACES, VARS & SET UP
+/* ========================================================================== */
+/* ========================================================================== */
+// DEFINING & BINDING THE ROUTE DECORATORS
 /* ========================================================================== */
 function routeBinder(method: string) {
    return function (path: string) {
@@ -23,7 +27,11 @@ function routeBinder(method: string) {
    };
 }
 
-export const Delete = routeBinder('delete');
-export const Get = routeBinder('get');
-export const Post = routeBinder('post');
-export const Put = routeBinder('put');
+/* ========================================================================== */
+// ALL REQUIRED EXPORTS
+/* ========================================================================== */
+export const Delete = routeBinder(Methods.Delete);
+export const Get = routeBinder(Methods.Get);
+export const Patch = routeBinder(Methods.Patch);
+export const Post = routeBinder(Methods.Post);
+export const Put = routeBinder(Methods.Put);
