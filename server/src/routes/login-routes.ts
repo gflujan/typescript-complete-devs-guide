@@ -68,7 +68,7 @@ router.get('/', (request: RequestWithBody, response: Response) => {
    }
 });
 
-router.post('/auth/login', (request: RequestWithBody, response: Response) => {
+router.post('/login', (request: RequestWithBody, response: Response) => {
    const { email, password } = request.body;
 
    if (validCreds(email, password)) {

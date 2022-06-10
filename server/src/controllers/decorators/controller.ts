@@ -23,12 +23,13 @@ export function Controller(routePrefix: string) {
    return function (target: Function) {
       const router: Router = AppRouter.instance;
 
-      for (let key in target.prototype) {
-         const routeHandler = target.prototype[key];
-         const path = Reflect.getMetadata('path', target.prototype, key);
+      for (const methodName in target.prototype) {
+         const routeHandler = target.prototype[methodName];
+         const method: string = Reflect.getMetadata('method', target.prototype, methodName);
+         const path: string = Reflect.getMetadata('path', target.prototype, methodName);
 
-         if (path) {
-            router.get(`${routePrefix}${path}`, routeHandler);
+         if (method && path) {
+            router[method](`${routePrefix}${path}`, routeHandler);
          }
       }
    };
