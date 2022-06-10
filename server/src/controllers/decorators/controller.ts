@@ -20,13 +20,14 @@ import { MetadataKeys, Methods } from './models';
 /* ========================================================================== */
 // DEFINING THE CONTROLLER DECORATOR
 /* ========================================================================== */
+// NOTE :: `Controller` is the "decorator factory"
 export function Controller(routePrefix: string) {
+   // NOTE :: this is the actual decorator
    return function (target: Function) {
       const router: Router = AppRouter.instance;
 
       for (const methodName in target.prototype) {
          const routeHandler = target.prototype[methodName];
-         const path: string = Reflect.getMetadata(MetadataKeys.Path, target.prototype, methodName);
 
          const method: Methods = Reflect.getMetadata(
             MetadataKeys.Method,
@@ -34,8 +35,13 @@ export function Controller(routePrefix: string) {
             methodName,
          );
 
+         const middlewares =
+            Reflect.getMetadata(MetadataKeys.Middleware, target.prototype, methodName) || [];
+
+         const path: string = Reflect.getMetadata(MetadataKeys.Path, target.prototype, methodName);
+
          if (method && path) {
-            router[method](`${routePrefix}${path}`, routeHandler);
+            router[method](`${routePrefix}${path}`, ...middlewares, routeHandler);
          }
       }
    };
