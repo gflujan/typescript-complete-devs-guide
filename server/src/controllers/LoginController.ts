@@ -3,19 +3,24 @@
 /* ========================================================================== */
 // React
 // Packages
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
 import { RequestWithBody } from '../routes/login-routes';
 // Utils / Methods / Mocks / Decorators
-import { Controller, Get } from './decorators';
+import { Controller, Get, Use } from './decorators';
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+function logger(req: Request, res: Response, next: NextFunction) {
+   console.log('Request was made!!!');
+   next();
+}
+
 /* ========================================================================== */
 // DEFINING THE `LOGIN CONTROLLER` CLASS
 /* ========================================================================== */
@@ -24,6 +29,7 @@ class LoginController {
    constructor() {}
 
    @Get('/login')
+   @Use(logger)
    getLogin(request: RequestWithBody, response: Response): void {
       response.send(`
          <form method="POST" action="/login">
