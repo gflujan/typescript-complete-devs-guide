@@ -3,10 +3,12 @@
 /* ========================================================================== */
 // React
 // Packages
+import 'reflect-metadata';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { MetadataKeys } from './models';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -14,21 +16,14 @@
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
 /* ========================================================================== */
-// DEFINING THE METHODS GLOBALLY
+// DEFINING THE `BODY VALIDATOR` DECORATOR
 /* ========================================================================== */
-export enum MetadataKeys {
-   Method = 'method',
-   Middleware = 'middleware',
-   Path = 'path',
-   Validator = 'validator',
-}
-
-export enum Methods {
-   Delete = 'delete',
-   Get = 'get',
-   Patch = 'patch',
-   Post = 'post',
-   Put = 'put',
+// NOTE :: `BodyValidator` is the "decorator factory"
+export function bodyValidator(...keys: string[]) {
+   // NOTE :: this is the actual decorator
+   return function (target: any, key: string, desc: PropertyDescriptor) {
+      Reflect.defineMetadata(MetadataKeys.Validator, keys, target, key);
+   };
 }
 
 /* ========================================================================== */

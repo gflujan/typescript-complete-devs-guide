@@ -4,7 +4,7 @@
 // React
 // Packages
 import 'reflect-metadata';
-import { Router } from 'express';
+import { NextFunction, Request, RequestHandler, Response, Router } from 'express';
 // Context / Stores / Routers
 import { AppRouter } from '../../AppRouter';
 // Components / Classes / Controllers / Services
@@ -17,6 +17,10 @@ import { MetadataKeys, Methods } from './models';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+function bodyValidators(keys: string[]): RequestHandler {
+   return function (request: Request, response: Response, next: NextFunction) {};
+}
+
 /* ========================================================================== */
 // DEFINING THE CONTROLLER DECORATOR
 /* ========================================================================== */
