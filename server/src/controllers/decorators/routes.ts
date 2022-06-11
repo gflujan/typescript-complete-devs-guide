@@ -4,6 +4,7 @@
 // React
 // Packages
 import 'reflect-metadata';
+import { RequestHandler } from 'express';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
@@ -15,6 +16,10 @@ import { MetadataKeys, Methods } from './models';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+interface RouteHandlerDescriptor extends PropertyDescriptor {
+   value?: RequestHandler;
+}
+
 /* ========================================================================== */
 // DEFINING & BINDING THE ROUTE DECORATORS
 /* ========================================================================== */
@@ -23,7 +28,7 @@ function routeBinder(method: string) {
    // NOTE :: This is the "decorator factory"
    return function (path: string) {
       // NOTE :: this is the actual decorator
-      return function (target: any, key: string, desc: PropertyDescriptor) {
+      return function (target: any, key: string, desc: RouteHandlerDescriptor) {
          Reflect.defineMetadata(MetadataKeys.Path, path, target, key);
          Reflect.defineMetadata(MetadataKeys.Method, method, target, key);
       };
