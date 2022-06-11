@@ -8,9 +8,9 @@ import cookieSession from 'cookie-session';
 import express from 'express';
 // Context / Stores / Routers
 import { AppRouter } from './AppRouter';
-import { router } from './routes/login-routes';
 // Components / Classes / Controllers / Services
-import './controllers/LoginController';
+import './controllers/login-controller';
+import './controllers/root-controller';
 // Assets
 // Constants / Models / Interfaces / Types
 import { Request, Response } from 'express';
@@ -27,7 +27,6 @@ const app = express();
 /* ========================================================================== */
 app.use(bodyParser.urlencoded({ extended: true }))
    .use(cookieSession({ keys: ['secret'] }))
-   .use(router) // <-- this should always be last/after any middlewares
    .use(AppRouter.instance);
 
 app.listen(3000, () => {

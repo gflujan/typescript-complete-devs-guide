@@ -3,6 +3,7 @@
 /* ========================================================================== */
 // React
 // Packages
+import { Request } from 'express';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
@@ -29,6 +30,10 @@ export enum Methods {
    Patch = 'patch',
    Post = 'post',
    Put = 'put',
+}
+
+export interface RequestWithBody extends Request {
+   body: { [key: string]: string | undefined };
 }
 
 /* ========================================================================== */

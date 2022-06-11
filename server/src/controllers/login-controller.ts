@@ -8,7 +8,7 @@ import { NextFunction, Request, Response } from 'express';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { RequestWithBody } from '../routes/login-routes';
+import { RequestWithBody } from './decorators/models';
 // Utils / Methods / Mocks / Decorators
 import { BodyValidator, Controller, Get, Post, Use } from './decorators';
 // Styles
@@ -16,7 +16,7 @@ import { BodyValidator, Controller, Get, Post, Use } from './decorators';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-const LOGIN_CONTROLLER_PATH_PREFIX = '/auth';
+export const LOGIN_CONTROLLER_PATH_PREFIX = '/auth';
 
 /* ========================================================================== */
 // DEFINING THE `LOGIN CONTROLLER` CLASS
@@ -26,7 +26,7 @@ class LoginController {
    constructor() {}
 
    @Get('/login')
-   getLogin(request: RequestWithBody, response: Response): void {
+   public getLogin(request: RequestWithBody, response: Response): void {
       response.send(`
          <form method="POST" action="${LOGIN_CONTROLLER_PATH_PREFIX}/login">
             <div>
@@ -45,7 +45,7 @@ class LoginController {
 
    @Post('/login')
    @BodyValidator('email', 'password')
-   postLogin(request: RequestWithBody, response: Response) {
+   public postLogin(request: RequestWithBody, response: Response) {
       const { email, password } = request.body;
 
       if (!email || !password) {
@@ -60,7 +60,16 @@ class LoginController {
       }
    }
 
-   private static validCreds(email?: string, password?: string): boolean {
+   @Get('/logout')
+   public getLogout(request: Request, response: Response) {
+      request.session = undefined;
+      response.redirect('/');
+   }
+
+   /* ========================================================================== */
+   // PRIVATE METHODS
+   /* ========================================================================== */
+   private static validCreds(email: string, password: string): boolean {
       return Boolean(email && email === 'bllr@example.com' && password && password === '12345');
    }
 }
