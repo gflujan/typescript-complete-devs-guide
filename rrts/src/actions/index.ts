@@ -9,7 +9,7 @@ import { Dispatch } from 'redux';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { ActionTypes } from './types';
+import { ActionTypes, FetchTodosAction, Todo } from './types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -18,20 +18,14 @@ import { ActionTypes } from './types';
 /* ========================================================================== */
 const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
 
-interface Todo {
-   completed: boolean;
-   id: number;
-   title: string;
-}
-
 /* ========================================================================== */
 // DEFINING THE `GLOBAL REDUX` ACTIONS
 /* ========================================================================== */
 export const fetchTodos = () => {
-   return async (dispatch: Dispatch): void => {
+   return async (dispatch: Dispatch): Promise<void> => {
       const response = await axios.get<Todo[]>(TODOS_URL);
 
-      dispatch({
+      dispatch<FetchTodosAction>({
          type: ActionTypes.FetchTodos,
          payload: response.data,
       });

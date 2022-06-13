@@ -20,6 +20,17 @@ export enum ActionTypes {
    FetchTodos = 'FetchTodos',
 }
 
+export interface FetchTodosAction {
+   payload: Todo[];
+   type: ActionTypes.FetchTodos;
+}
+
+export interface Todo {
+   completed: boolean;
+   id: number;
+   title: string;
+}
+
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
