@@ -3,8 +3,9 @@
 /* ========================================================================== */
 // React
 // Packages
+import axios from 'axios';
+import { Dispatch } from 'redux';
 // Context / Stores / Routers
-import { combineReducers } from 'redux';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
@@ -14,14 +15,23 @@ import { combineReducers } from 'redux';
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+const FETCH_TODOS = 'FETCH_TODOS';
+const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
+
 /* ========================================================================== */
-// DEFINING THE `GLOBAL REDUX` REDUCERS
+// DEFINING THE `GLOBAL REDUX` ACTIONS
 /* ========================================================================== */
-const reducers = combineReducers({
-   counter: () => 1,
-});
+export const fetchTodos = () => {
+   return async (dispatch: Dispatch): void => {
+      const response = await axios.get(TODOS_URL);
+
+      dispatch({
+         type: FETCH_TODOS,
+         payload: response.data,
+      });
+   };
+};
 
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
-export { reducers };
