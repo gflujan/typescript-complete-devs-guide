@@ -7,7 +7,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { ActionTypes, FetchTodosAction, Todo } from '../actions/types';
+import { ActionTypes, FetchTodosAction, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 

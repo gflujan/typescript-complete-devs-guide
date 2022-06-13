@@ -9,7 +9,7 @@ import { Dispatch } from 'redux';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { ActionTypes, FetchTodosAction, Todo } from './types';
+import { ActionTypes, FetchTodosAction, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 

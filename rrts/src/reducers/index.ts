@@ -3,11 +3,13 @@
 /* ========================================================================== */
 // React
 // Packages
-// Context / Stores / Routers
 import { combineReducers } from 'redux';
+// Context / Stores / Routers
+import { todosReducer } from './todos';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { GlobalStoreState } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -17,8 +19,8 @@ import { combineReducers } from 'redux';
 /* ========================================================================== */
 // DEFINING THE `GLOBAL REDUX` REDUCERS
 /* ========================================================================== */
-const reducers = combineReducers({
-   counter: () => 1,
+const reducers = combineReducers<GlobalStoreState>({
+   todos: todosReducer,
 });
 
 /* ========================================================================== */

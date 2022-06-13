@@ -8,16 +8,13 @@ import { Component } from 'react';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
+import { AppProps } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-interface AppProps {
-   color?: string;
-}
-
 /* ========================================================================== */
 // DEFINING THE `MAIN APP` COMPONENT
 /* ========================================================================== */
