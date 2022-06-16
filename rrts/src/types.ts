@@ -20,8 +20,8 @@ export enum ActionTypes {
    FetchTodos = 'FetchTodos',
 }
 
-export interface AppProps {
-   color?: string;
+export interface AppProps extends StateProps {
+   fetchTodos: () => any;
 }
 
 export interface FetchTodosAction {
@@ -30,6 +30,10 @@ export interface FetchTodosAction {
 }
 
 export interface GlobalStoreState {
+   todos: Todo[];
+}
+
+export interface StateProps {
    todos: Todo[];
 }
 

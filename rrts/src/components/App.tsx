@@ -4,24 +4,31 @@
 // React
 import { Component } from 'react';
 // Packages
+import { connect } from 'react-redux';
 // Context / Stores / Routers
+import { fetchTodos } from '../actions';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { AppProps } from '../types';
+import { AppProps, GlobalStoreState, StateProps, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
+const mapStateToProps = (state: GlobalStoreState): StateProps => {
+   const { todos } = state;
+   return { todos };
+};
+
 /* ========================================================================== */
 // DEFINING THE `MAIN APP` COMPONENT
 /* ========================================================================== */
-class App extends Component<AppProps> {
-   constructor(props: AppProps) {
-      super(props);
-   }
+class _App extends Component<AppProps> {
+   // constructor(props: AppProps) {
+   //    super(props);
+   // }
 
    render() {
       return (
@@ -35,4 +42,4 @@ class App extends Component<AppProps> {
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
-export { App };
+export const App = connect(mapStateToProps, { fetchTodos })(_App);
