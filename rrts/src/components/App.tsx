@@ -30,10 +30,23 @@ class _App extends Component<AppProps> {
    //    super(props);
    // }
 
+   onButtonClick = (): void => {
+      this.props.fetchTodos();
+   };
+
+   renderList(): JSX.Element[] {
+      return this.props.todos.map((todo: Todo) => {
+         return <li key={todo.id}>{todo.title}</li>;
+      });
+   }
+
    render() {
       return (
          <div>
-            <h1>Rooney sucks!!!</h1>
+            <button className="" type="button" onClick={this.onButtonClick}>
+               Rooney sucks!!!
+            </button>
+            <ul>{this.renderList()}</ul>
          </div>
       );
    }
