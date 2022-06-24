@@ -10,14 +10,14 @@ import { fetchTodos } from '../actions';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { AppProps, GlobalStoreState, StateProps, Todo } from '../types';
+import { AppProps, RootState, StateProps, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
 /* ========================================================================== */
 // INTERNAL HELPERS, INTERFACES, VARS & SET UP
 /* ========================================================================== */
-const mapStateToProps = (state: GlobalStoreState): StateProps => {
+const mapStateToProps = (state: RootState): StateProps => {
    const { todos } = state;
    return { todos };
 };
@@ -25,7 +25,7 @@ const mapStateToProps = (state: GlobalStoreState): StateProps => {
 /* ========================================================================== */
 // DEFINING THE `MAIN APP` COMPONENT
 /* ========================================================================== */
-class _App extends Component<AppProps> {
+class Bllr extends Component<AppProps> {
    // constructor(props: AppProps) {
    //    super(props);
    // }
@@ -35,7 +35,9 @@ class _App extends Component<AppProps> {
    };
 
    renderList(): JSX.Element[] {
-      return this.props.todos.map((todo: Todo) => {
+      const { todos } = this.props;
+
+      return todos.map((todo: Todo) => {
          return <li key={todo.id}>{todo.title}</li>;
       });
    }
@@ -46,7 +48,7 @@ class _App extends Component<AppProps> {
             <button className="" type="button" onClick={this.onButtonClick}>
                Rooney sucks!!!
             </button>
-            <ul>{this.renderList()}</ul>
+            <ol>{this.renderList()}</ol>
          </div>
       );
    }
@@ -55,4 +57,4 @@ class _App extends Component<AppProps> {
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
-export const App = connect(mapStateToProps, { fetchTodos })(_App);
+export const App = connect(mapStateToProps, { fetchTodos })(Bllr);

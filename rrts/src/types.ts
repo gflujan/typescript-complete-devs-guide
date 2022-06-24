@@ -29,7 +29,7 @@ export interface FetchTodosAction {
    type: ActionTypes.FetchTodos;
 }
 
-export interface GlobalStoreState {
+export interface RootState {
    todos: Todo[];
 }
 

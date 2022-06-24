@@ -9,7 +9,7 @@ import { todosReducer } from './todos';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { GlobalStoreState } from '../types';
+import { RootState } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -19,7 +19,7 @@ import { GlobalStoreState } from '../types';
 /* ========================================================================== */
 // DEFINING THE `GLOBAL REDUX` REDUCERS
 /* ========================================================================== */
-const reducers = combineReducers<GlobalStoreState>({
+const reducers = combineReducers<RootState>({
    todos: todosReducer,
 });
 
