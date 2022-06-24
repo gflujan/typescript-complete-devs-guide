@@ -2,7 +2,7 @@
 // ALL REQUIRED IMPORTS
 /* ========================================================================== */
 // React
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 // import { Component } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -25,7 +25,6 @@ const store = createStore(reducers, applyMiddleware(thunk));
 /* ========================================================================== */
 // DEFINING THE `MAIN APP` COMPONENT
 /* ========================================================================== */
-
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
