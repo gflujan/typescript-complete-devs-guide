@@ -28,6 +28,10 @@ export interface AppProps extends StateProps {
    fetchTodos: Function;
 }
 
+export interface AppState {
+   fetching: boolean;
+}
+
 export interface DeleteTodoAction {
    payload: number;
    type: ActionTypes.DeleteTodo;

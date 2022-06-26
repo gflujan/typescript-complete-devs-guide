@@ -10,7 +10,7 @@ import { deleteTodo, fetchTodos } from '../actions';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { AppProps, RootState, StateProps, Todo } from '../types';
+import { AppProps, AppState, RootState, StateProps, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -25,13 +25,30 @@ const mapStateToProps = (state: RootState): StateProps => {
 /* ========================================================================== */
 // DEFINING THE `MAIN APP` COMPONENT
 /* ========================================================================== */
-class Bllr extends Component<AppProps> {
-   // constructor(props: AppProps) {
-   //    super(props);
-   // }
+class Bllr extends Component<AppProps, AppState> {
+   constructor(props: AppProps) {
+      super(props);
+
+      this.state = {
+         fetching: false,
+      };
+   }
+
+   componentDidUpdate(prevProps: AppProps): void {
+      const { todos: prevTodos } = prevProps;
+      const { todos } = this.props;
+
+      if (!prevTodos.length && todos.length) {
+         this.setState({ fetching: false });
+      }
+   }
 
    onButtonClick = (): void => {
-      this.props.fetchTodos();
+      this.setState({ fetching: true });
+
+      setTimeout(() => {
+         this.props.fetchTodos();
+      }, 2000);
    };
 
    onTodoClick = (id: number): void => {
@@ -54,6 +71,7 @@ class Bllr extends Component<AppProps> {
             <button className="" type="button" onClick={this.onButtonClick}>
                Rooney sucks!!!
             </button>
+            <p>{this.state.fetching ? 'LOADING...' : null}</p>
             <ol>{this.renderList()}</ol>
          </div>
       );
