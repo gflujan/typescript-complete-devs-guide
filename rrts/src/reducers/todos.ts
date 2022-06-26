@@ -7,7 +7,7 @@
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
-import { ActionTypes, FetchTodosAction, Todo } from '../types';
+import { Action, ActionTypes, Todo } from '../types';
 // Utils / Methods / Mocks / Decorators
 // Styles
 
@@ -17,7 +17,7 @@ import { ActionTypes, FetchTodosAction, Todo } from '../types';
 /* ========================================================================== */
 // DEFINING THE `TODOS` REDUCER
 /* ========================================================================== */
-export const todosReducer = (state: Todo[] = [], action: FetchTodosAction) => {
+export const todosReducer = (state: Todo[] = [], action: Action) => {
    switch (action.type) {
       case ActionTypes.FetchTodos:
          return action.payload;

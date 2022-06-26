@@ -16,6 +16,8 @@
 /* ========================================================================== */
 // DEFINING THE GLOBAL TYPES
 /* ========================================================================== */
+export type Action = DeleteTodoAction | FetchTodosAction;
+
 export enum ActionTypes {
    DeleteTodo = 'DeleteTodo',
    FetchTodos = 'FetchTodos',
