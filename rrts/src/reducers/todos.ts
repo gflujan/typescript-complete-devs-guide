@@ -20,6 +20,8 @@ import { Action, ActionTypes, Todo } from '../types';
 export const todosReducer = (state: Todo[] = [], action: Action) => {
    switch (action.type) {
       case ActionTypes.DeleteTodo:
+         console.debug(`Deleting Todo w/ ID of: ${action.payload}`);
+
          return state.filter((todo: Todo) => {
             return todo.id !== action.payload;
          });

@@ -6,7 +6,6 @@
 import { Dispatch } from 'redux';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
-import { deleteTodo, fetchTodos } from './actions';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks / Decorators
@@ -26,8 +25,8 @@ export enum ActionTypes {
 }
 
 export interface AppProps extends StateProps {
-   deleteTodo: any; // this should be better typed, but fuck it...
-   fetchTodos: any; // this should be better typed, but fuck it...
+   deleteTodo: (id: number) => DeleteTodoAction;
+   fetchTodos: Function;
 }
 
 export interface DeleteTodoAction {
