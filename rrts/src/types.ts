@@ -17,11 +17,17 @@
 // DEFINING THE GLOBAL TYPES
 /* ========================================================================== */
 export enum ActionTypes {
+   DeleteTodo = 'DeleteTodo',
    FetchTodos = 'FetchTodos',
 }
 
 export interface AppProps extends StateProps {
    fetchTodos: () => any;
+}
+
+export interface DeleteTodoAction {
+   payload: number;
+   type: ActionTypes.DeleteTodo;
 }
 
 export interface FetchTodosAction {
