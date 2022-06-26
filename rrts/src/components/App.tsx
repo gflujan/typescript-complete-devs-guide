@@ -6,7 +6,7 @@ import { Component } from 'react';
 // Packages
 import { connect } from 'react-redux';
 // Context / Stores / Routers
-import { fetchTodos } from '../actions';
+import { deleteTodo, fetchTodos } from '../actions';
 // Components / Classes / Controllers / Services
 // Assets
 // Constants / Models / Interfaces / Types
@@ -34,11 +34,17 @@ class Bllr extends Component<AppProps> {
       this.props.fetchTodos();
    };
 
-   renderList(): JSX.Element[] {
-      const { todos } = this.props;
+   onTodoClick = (id: number): void => {
+      this.props.deleteTodo(id);
+   };
 
-      return todos.map((todo: Todo) => {
-         return <li key={todo.id}>{todo.title}</li>;
+   renderList(): JSX.Element[] {
+      return this.props.todos.map((todo: Todo) => {
+         return (
+            <li key={todo.id} onClick={() => this.onTodoClick(todo.id)}>
+               {todo.title}
+            </li>
+         );
       });
    }
 
@@ -57,4 +63,4 @@ class Bllr extends Component<AppProps> {
 /* ========================================================================== */
 // ALL REQUIRED EXPORTS
 /* ========================================================================== */
-export const App = connect(mapStateToProps, { fetchTodos })(Bllr);
+export const App = connect(mapStateToProps, { deleteTodo, fetchTodos })(Bllr);

@@ -3,8 +3,10 @@
 /* ========================================================================== */
 // React
 // Packages
+import { Dispatch } from 'redux';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
+import { deleteTodo, fetchTodos } from './actions';
 // Assets
 // Constants / Models / Interfaces / Types
 // Utils / Methods / Mocks / Decorators
@@ -24,7 +26,8 @@ export enum ActionTypes {
 }
 
 export interface AppProps extends StateProps {
-   fetchTodos: () => any;
+   deleteTodo: any; // this should be better typed, but fuck it...
+   fetchTodos: any; // this should be better typed, but fuck it...
 }
 
 export interface DeleteTodoAction {
