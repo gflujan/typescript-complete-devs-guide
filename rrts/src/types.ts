@@ -3,7 +3,6 @@
 /* ========================================================================== */
 // React
 // Packages
-import { Dispatch } from 'redux';
 // Context / Stores / Routers
 // Components / Classes / Controllers / Services
 // Assets
